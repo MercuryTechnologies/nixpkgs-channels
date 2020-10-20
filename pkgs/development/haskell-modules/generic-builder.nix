@@ -505,6 +505,9 @@ stdenv.mkDerivation ({
     mkdir -p $doc
     ''}
     ${optionalString enableSeparateDataOutput "mkdir -p $data"}
+    # See note in pkgs/build-support/bintools-wrapper/setup-hook.sh
+    mkdir -p $out/nix-support
+    touch $out/nix-support/bintools-no-addLDVars
 
     runHook postInstall
   '';
